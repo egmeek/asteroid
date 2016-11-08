@@ -1,0 +1,95 @@
+<template name="dashboard">
+  {{> addDeviceModal }}
+  {{> logModal }}
+
+  <div class="container dashboard">
+    <div class="page-header">
+      <h1>Dashboard</h1>
+    </div>
+
+    <div class="row">
+      <div class="span9">
+        <div class="row">
+          <div class="span9">
+          <h2>Your Raspberry Pis</h2>
+          {{> deviceList }}
+          </div>
+        </div>
+      </div>
+      {{>sidebar}}
+    </div>
+
+  </div>
+</template>
+
+<template name="deviceList">
+  {{#if hasDevices }}
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr><th>Device</th><th>Device information</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        {{#each devices}}
+          {{> device}}
+        {{/each}}
+      </tbody>
+    </table>
+  {{ else }}
+    <p>You have not added any Raspberry Pi yet. </p>
+  {{/if}}
+  <p><span class="btn addDevice">Add new device</span></p>
+  {{#unless hasDevices}}
+    <p><em>Please <a href="/learn/getting-started">follow our getting started guide</a> to install pijs.io on your Raspberry Pi.</em></p>
+  {{/unless}}
+</template>
+
+<template name="device">
+  <tr class="{{rowClass status }}">
+    <td class="deviceName">
+      {{#if editName }}
+        <div class="input-append">
+          <input type="text" class="endsInput" placeholder="Name me!" value="{{ name }}">
+          <button class="btn endsInput" type="button"><i class="icon-ok"/></button>
+        </div>
+      {{ else }}
+        {{ name }}
+      {{/if }}
+    </td>
+    <td><pre>{{ software }} - {{ version }}</pre></td>
+    <td>{{ lastSeen }}</td>
+    <td>
+      <a class="btn" href="{{ editorPath _id }}">Edit Code</a>
+      <button class="btn viewLogs"><i class="icon-list-alt"></i></button>
+      <button class="btn deleteLogs"><i class="icon-remove"></i></button>
+    </td>
+  </tr>
+  <tr class="{{ rowClass status }}">
+    <td class="deviceLogs" colspan="4">
+      <pre class="log">
+        {{#each logs}}
+{{> logLine }}
+        {{/each}}
+      </pre>
+    </td>
+  </tr>
+</template>
+
+<template name="sidebar">
+  <div class="span3">
+    <div class="well">
+    {{#if hasDevices }}
+      <h3>Running code on your Pi</h3>
+      <p>Now that you have added a device, just click on <button class="btn">Edit code</button> next to it and start writing JavaScript.</p>
+      <p>In pijs.io, each device is associated to its code and it will automatically run it every time it connects to the server - or every time you change the code: no need to save, just stop typing and your code is pushed to the device.</p>
+      <h4>Want to run some code at regular intervals?</h4>
+      <p>It is very easy with <code>setInterval(function() { }, time)</code>: your code will run every <code>time</code> milliseconds.</p>
+      <h4>How about logs?</h4>
+      <p>The output of your code (<code>console.log()</code>) is pushed in realtime to the cloud and the three most recent lines appear in your dashboard. You can view your complete logs with the button: <button class="btn viewLogs"><i class="icon-list-alt"></i></button>.</p>
+      <p>Remember to clean up the logs sometimes with the <button class="btn deleteLogs"><i class="icon-remove"></i></button> button.
+    {{else}}
+      <h3>Adding device to your dashboard</h3>
+      <p>Before you can control and program your Raspberry Pi through pijs.io, you need to install a little piece of software on your Raspberry Pi that will connect it to this cloud platform.</p>
+      <p>Follow the instructions in our Getting Started guide, it will only take a few minutes.</p>
+    {{/if}}
+  </div>
+</template>

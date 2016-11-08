@@ -5,18 +5,18 @@ Accounts.loginServiceConfiguration.remove({
 if (Meteor.settings.twitter) {
   Accounts.loginServiceConfiguration.insert({
     service: "twitter",
-    appId: Meteor.settings.twitter.token,
+    consumerKey: Meteor.settings.twitter.token,
     secret: Meteor.settings.twitter.key
-  });  
+  });
 }
 
 Accounts.loginServiceConfiguration.remove({
   service: "github"
 });
-  if (Meteor.settings.twitter) {
+  if (Meteor.settings.github) {
   Accounts.loginServiceConfiguration.insert({
     service: "github",
-    appId: Meteor.settings.github.token,
+    clientId: Meteor.settings.github.token,
     secret: Meteor.settings.github.key
   });
 }
@@ -24,7 +24,7 @@ Accounts.loginServiceConfiguration.remove({
 Accounts.loginServiceConfiguration.remove({
   service: "facebook"
 });
-if (Meteor.settings.twitter) {
+if (Meteor.settings.facebook) {
   Accounts.loginServiceConfiguration.insert({
     service: "facebook",
     appId: Meteor.settings.facebook.token,

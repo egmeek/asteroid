@@ -1,0 +1,80 @@
+<template name="editor">
+  <div class="container editor">
+    {{#if enabled }}
+      <div class="row">
+        {{> codeToolbar}}
+      </div>
+      <div class="row">
+        <div class="span12">
+            {{> codeEditor }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12">
+          {{> console }}
+        </div>
+      </div>
+    {{ else }}
+      <div class="row">
+        &nbsp;
+      </div>
+      <div class="row">
+        <div class="span8 offset2 well">
+          <p>Sorry, you need to <a href="/learn/getting-started">connect a Raspberry Pi</a> before you can use the editor.</a>.
+          </p>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="codeToolbar">
+  <div class="span12 editor-toolbar">
+    <div class="btn-group">
+      <button class="btn dropdown-toggle" href="#">
+        {{ deviceName }}
+        <span class="caret"></span>
+      </button>
+      <!-- add data-toggle="dropdown" to the button above
+      <ul class="dropdown-menu">
+        {{#each devices}}
+          {{> deviceItem}}
+        {{/each}}
+      </ul>
+    -->
+    </div>
+    <!--
+    <div class="btn-group pull-right">
+      <button class="btn disabled"><i class="icon-play"></i></button>
+    </div>
+  -->
+    <p class="pull-right editor-saved">
+      {{>saveMessage}}
+    </p>
+  </div>
+</template>
+
+<template name="codeEditor">
+  {{#constant}}
+    <div id="code-editor"></div>
+  {{/constant}}
+</template>
+
+<template name="saveMessage">
+  <small class="{{ saveMessageClass }}">{{ saveMessage }}</small>
+</template>
+
+<template name="deviceItem">
+  <li><a href="#">{{ name }}</a></li>
+</template>
+
+<template name="console">
+  <div class="pull-right">
+    <button class="btn btn-danger clearConsole">Clear console</button>
+  </div>
+  <pre class="log">
+    {{#each logs}}
+{{>logLine}}
+    {{/each}}
+  </pre>
+</template>

@@ -1,0 +1,98 @@
+<template name="home">
+  <div class="hero-unit">
+    <div class="container">
+      <div class="row">
+        <div class="span6">
+          <h1>The easiest way to program your Raspberry Pi!</h1>
+          <p>Pijs.io is a cloud-platform to write embedded applications for your Raspberry Pi, in JavaScript</p>
+          {{> emailForm}}
+        </div>
+        <div class="span6" class="pagination-centered">
+          <iframe width="420" height="315" src="http://www.youtube.com/embed/VIIYU3zmnos" frameborder="0" allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row marketing">
+      <div class="span4">
+        <img src="/img/122-stats.png" class="bs-icon">
+        <h3>Built for the Raspberry Pi</h3>
+        <p>Pijs.io is very easy to install on your <a href="http://www.raspberrypi.org">Raspberry Pi</a>. Follow our <a href="/learn/gettingstarted">Getting Started</a> guide and you will be up in no time!</p>
+      </div>
+      <div class="span4">
+        <img src="/img/20-gear-2.png" class="bs-icon">
+        <h3>JavaScript everywhere!</h3>
+        <p>
+          JavaScript is a great language to build simple scripts that react to events in the real world or Internet. Follow our <a href="/learn/">tutorials</a> to quickly learn the specifics of JavaScript on the RaspberryPi.</p>
+        </p>
+      </div>
+      <div class="span4">
+        <img src="/img/58-wifi.png" class="bs-icon">
+        <h3>Completely free</h3>
+        <p>Pijs.io is <a href="http://www.github.com/tbideas/asteroid/">open-source and available</a> under the MIT open-source license.<br>You can use our (free) cloud service, or host it yourself - and you can always go back to launching your scripts manually with nodejs.</p>
+      </div>
+    </div>
+    <div class="page-header">
+      <h1>How does it work?</h1>
+    </div>
+    <div class="row">
+      <div class="span4">
+        <h3>1. Connect</h3>
+        <p>Starting with a fresh Raspbian installation, you only need to run one simple script to install all the dependencies (nodejs, etc) on your Raspberry Pi and see it appear in your pijs.io dashboard.</p>
+      </div>
+      <div class="span4">
+        <h3>2. Program</h3>
+        <p>Using our web-based JavaScript editor, write programs that read the inputs of the RaspberryPi and interact with its peripherals.</p>
+      </div>
+      <div class="span4">
+        <h3>3. Run</h3>
+        <p>Your Raspberry Pi will automatically download your code from the cloud and execute it. When you update your code, the running code is updated automatically.<br>With the online console, you can easily monitor your pis.</p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="span6">
+        <div class="page-header">
+          <h1>They love pijs.io!</h1>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="pull-right" style="margin-top: 30px">
+          <a href="https://twitter.com/pijsio" class="twitter-follow-button" data-show-count="true" data-size="large" data-align="right">Follow @pijsio</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span6">
+        <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden"><p>js and raspberry pi lovers rejoice - write embedded applications on the Pi with <a href="http://t.co/U5j7psGVo4" title="http://buff.ly/10n46z2">buff.ly/10n46z2</a> . YES! Trying.via @<a href="https://twitter.com/kylekellog">kylekellog</a></p>&mdash; Stacey Mulcahy (@bitchwhocodes) <a href="https://twitter.com/bitchwhocodes/status/332837494628417538">May 10, 2013</a></blockquote>
+      </div>
+      <div class="span6">
+        <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden"><p>Node.js + Raspberrypi: the easy way with pijs.io <a href="https://twitter.com/search/%23nodejs">#nodejs</a> <a href="https://twitter.com/search/%23rpi">#rpi</a> <a href="https://twitter.com/search/%23raspberrypi">#raspberrypi</a> <a href="http://t.co/3fgZbJi4fw" title="http://www.tbideas.com/blog/2013/04/NodeJS-Raspberry-Pi-The-easy-way/">tbideas.com/blog/2013/04/N…</a> via @<a href="https://twitter.com/newsnodejs">newsnodejs</a></p>&mdash; nodejs-news (@NewsNodejs) <a href="https://twitter.com/NewsNodejs/status/319419101271433216">April 3, 2013</a></blockquote>
+      </div>
+      <div class="span6">
+        <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden"><p>Write embedded @<a href="https://twitter.com/raspberry_pi">raspberry_pi</a> apps in javascript, with <a href="http://t.co/bKU5eYlYyv" title="http://pijs.io/">pijs.io</a>. Step-by-step setup guide by @<a href="https://twitter.com/sarfata">sarfata</a> - <a href="http://t.co/6u1yaL8Cai" title="http://bit.ly/Za6fgU">bit.ly/Za6fgU</a></p>&mdash; Meteor (@meteorjs) <a href="https://twitter.com/meteorjs/status/334957987615629312">May 16, 2013</a></blockquote>
+      </div>
+      <div class="span6">
+        <blockquote class="twitter-tweet" data-conversation="none" data-cards="hidden"><p>weekend hack: <a href="https://twitter.com/search/%23raspberrypi">#raspberrypi</a> now texts me whenever a keyword is mentioned on twitter! check it out: <a href="https://t.co/r9sldTWAFo" title="https://github.com/chendriksen/pijs-tweet-sms">github.com/chendriksen/pi…</a></p>&mdash; C. Hendriksen (@CHendriksen) <a href="https://twitter.com/CHendriksen/status/336212357946675200">May 19, 2013</a></blockquote>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="emailForm">
+  {{#if showEmailForm }}
+    <div class="pagination-centered">
+      <form class="form-inline" id="stayintouch" action="#">
+        <input name="email" class="" type="text" placeholder="Email">
+        <button type="submit" class="btn">Let's stay in touch</button>
+      </form>
+    </div>
+  {{else }}
+    <div class="pagination-centered">
+      <p><small>Thanks, We will stay in touch!</small></p>
+    </div>
+  {{/if}}
+</template>

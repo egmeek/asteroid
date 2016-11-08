@@ -1,0 +1,30 @@
+<template name="learnList">
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <div class="page-header">
+          <h1>Learn</h1>
+        </div>
+        
+        <ul class="thumbnails">
+          {{#each posts}}
+            {{> learnPost}}
+          {{/each}}
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="learnPost">
+  <li class="span3 learn-thumbnail">
+    <div class="thumbnail">
+      <div class="img-container">
+        <a href="{{ fancyPath }}"><img src="{{ image }}" alt=""></a>
+      </div>
+      <a href="{{ fancyPath }}"><h1>{{ title }}</h1></a>
+      <p>{{ summary }}</p>
+    </div>
+  </li>
+</template>
