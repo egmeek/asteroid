@@ -10,10 +10,7 @@ Template.deviceList.events({
   'click .addDevice': function(event, template) {
     $('#addDeviceModal').modal();
     analytics.event("Dashboard", "New device wizard");
-    
-    WhatsMyIp.getIP(function(myip) {
-      Meteor.subscribe("new-devices", myip);
-    });    
+    Meteor.subscribe("new-devices");
   }
 });
 Template.device.rowClass = function(status) {
@@ -29,8 +26,13 @@ Template.device.rowClass = function(status) {
 Template.device.editName = function() {
   return this.name === undefined || Session.get("edit-" + this._id);
 }
-Template.device.name = function() {
-  return "Name me!"
+Template.device.displayName = function() {
+  if (this.name === undefined) {
+    return "Name me!";
+  }
+  else {
+    return this.name;
+  }
 }
 Template.device.lastSeen = function() {
   return moment(this.lastSeen).fromNow();
